@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
 import { Controller, useForm } from "react-hook-form";
@@ -11,11 +11,22 @@ import { InputText } from "primereact/inputtext";
 import { InputNumber } from "primereact/inputnumber";
 import { Button } from "primereact/button";
 import Axios from "../api/Axios";
+import { Toast } from "primereact/toast";
+import type { RefObject } from "react";
 
+type UsersListProps = {
+  toast: RefObject<Toast | null>;
+};
+type FormValues = {
+  name: string;
+  username: string;
+  email: string;
+  age: number;
+};
 // Infer type from schema
 type UserFormData = yup.InferType<typeof userSchema>;
 
-const AddEdit = ({ toast }) => {
+const AddEdit = ({ toast }: UsersListProps) => {
   const navigate = useNavigate();
   const { id } = useParams();
   const {
@@ -36,7 +47,7 @@ const AddEdit = ({ toast }) => {
   const onSubmit = async (data: SubmitData) => {
     if (id) {
       await Axios.put(`/users/${id}`, data);
-      toast.current.show({
+      toast.current?.show({
         severity: "success",
         summary: "Updated",
         detail: "Data updated successfully",
@@ -44,7 +55,7 @@ const AddEdit = ({ toast }) => {
       });
     } else {
       await Axios.post("/users", data);
-      toast.current.show({
+      toast.current?.show({
         severity: "success",
         summary: "Added",
         detail: "Data added successfully",
@@ -59,7 +70,9 @@ const AddEdit = ({ toast }) => {
     if (id) {
       Axios(`/users/${id}`)
         .then((res) =>
-          Object.keys(res.data).forEach((key) => setValue(key, res.data[key])),
+          Object.keys(res.data).forEach((key) => {
+            setValue(key as keyof FormValues, res.data[key]);
+          }),
         )
         .catch((err) => console.log(err));
     }

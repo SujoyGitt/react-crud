@@ -1,13 +1,14 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
-import UsersList from "./pages/UsersList";
+// import UsersList from "./pages/UsersList";
+const UsersList = lazy(() => import("./pages/UsersList"));
 import AddEdit from "./pages/AddEditUser";
 import Layout from "./layout/Layout";
-import { ConfirmDialog, confirmDialog } from "primereact/confirmdialog";
+import { ConfirmDialog } from "primereact/confirmdialog";
 import { Toast } from "primereact/toast";
-import { useRef } from "react";
+import { lazy, Suspense, useRef } from "react";
 function App() {
-  const toast = useRef(null);
+  const toast = useRef<Toast | null>(null);
 
   return (
     <BrowserRouter>
@@ -15,9 +16,11 @@ function App() {
       <ConfirmDialog />
       <Routes>
         <Route element={<Layout />}>
-          <Route path="/" element={<UsersList toast={toast}/>} />
-          <Route path="/add" element={<AddEdit toast={toast}/>} />
-          <Route path="/edit/:id" element={<AddEdit toast={toast}/>} />
+          <Suspense fallback={<div>Loading...</div>}>
+            <Route path="/" element={<UsersList toast={toast} />} />
+          </Suspense>
+          <Route path="/add" element={<AddEdit toast={toast} />} />
+          <Route path="/edit/:id" element={<AddEdit toast={toast} />} />
         </Route>
       </Routes>
     </BrowserRouter>

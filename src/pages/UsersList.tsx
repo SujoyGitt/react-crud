@@ -7,8 +7,13 @@ import { InputText } from "primereact/inputtext";
 import { FilterMatchMode } from "primereact/api";
 import { useNavigate } from "react-router-dom";
 import { confirmDialog } from "primereact/confirmdialog";
+import { Toast } from "primereact/toast";
+import type { RefObject } from "react";
 
-const UsersList = ({ toast }) => {
+type UsersListProps = {
+  toast: RefObject<Toast | null>;
+};
+const UsersList = ({ toast }: UsersListProps) => {
   const [users, setUsers] = useState([]);
   const navigate = useNavigate();
 
@@ -30,7 +35,7 @@ const UsersList = ({ toast }) => {
       matchMode: FilterMatchMode.CONTAINS,
     },
     global: {
-      value: null,
+      value: "",
       matchMode: FilterMatchMode.CONTAINS,
     },
   });
@@ -60,7 +65,7 @@ const UsersList = ({ toast }) => {
       accept: async () => {
         await Axios.delete(`/users/${id}`);
         fetchUser();
-        toast.current.show({
+        toast.current?.show({
           severity: "error",
           summary: "Deleted",
           detail: "Data deleted successfully",
@@ -107,12 +112,13 @@ const UsersList = ({ toast }) => {
           placeholder="Search users..."
           className="pl-6"
           onChange={(e) =>
-            setFilters({
+            setFilters((prev) => ({
+              ...prev,
               global: {
+                ...prev.global,
                 value: e.target.value,
-                matchMode: FilterMatchMode.CONTAINS,
               },
-            })
+            }))
           }
         />
       </span>
