@@ -20,6 +20,13 @@
       "email": "roy677@gmail.com",
       "age": 27,
       "id": "fsvy2XDEPoQ"
+    },
+    {
+      "name": "Charde Cox",
+      "username": "libesuxe",
+      "email": "reje@mailinator.com",
+      "age": 26,
+      "id": "vZ2tCVrY04k"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
