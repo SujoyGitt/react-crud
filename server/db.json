@@ -1,0 +1,26 @@
+{
+  "users": [
+    {
+      "name": "Sujoy Ghosal",
+      "username": "Sujoy@123",
+      "email": "sujoy143656@gmail.com",
+      "age": 25,
+      "id": "mPe1SMlLX_s"
+    },
+    {
+      "name": "Hiru Roy",
+      "username": "hiru@123",
+      "email": "roy677@gmail.com",
+      "age": 28,
+      "id": "DGtAhRv-p1Y"
+    },
+    {
+      "name": "Kitra Mcdonald",
+      "username": "nynamutiv",
+      "email": "zulylij@mailinator.com",
+      "age": 18,
+      "id": "rQafkIYN4Ls"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}
