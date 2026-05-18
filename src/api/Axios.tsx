@@ -1,5 +1,5 @@
 import axios from "axios"
 
 export default axios.create({
-    baseURL: "http://localhost:10000/"
+    baseURL: "https://react-crud-1-l71u.onrender.com/"
 })
