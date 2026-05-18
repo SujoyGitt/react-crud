@@ -80,7 +80,7 @@ const AddEdit = ({ toast }: UsersListProps) => {
 
   return (
     <>
-      <div className="flex justify-content-center align-items-center min-h-screen bg-gray-100">
+      <div className="flex justify-content-center align-items-center pt-5 bg-gray-100">
         <div
           className="surface-card p-5 border-round-2xl shadow-4"
           style={{ width: "100%", maxWidth: "450px" }}

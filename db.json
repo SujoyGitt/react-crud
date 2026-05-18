@@ -1,32 +1,11 @@
 {
   "users": [
     {
-      "name": "Mrityunjoy Dutta",
-      "username": "dutta@321",
-      "email": "joydutta@gmail.com",
-      "age": 26,
-      "id": "MZ2Dvb3E3uA"
-    },
-    {
       "name": "Sujoy Ghosal",
-      "username": "sujoy143656@gmail.com",
+      "username": "Sujoy@123",
       "email": "sujoy143656@gmail.com",
-      "age": 24,
-      "id": "JVcmZqMiPrs"
-    },
-    {
-      "name": "Hiru Roy",
-      "username": "Roy123",
-      "email": "roy677@gmail.com",
-      "age": 27,
-      "id": "fsvy2XDEPoQ"
-    },
-    {
-      "name": "Charde Cox",
-      "username": "libesuxe",
-      "email": "reje@mailinator.com",
-      "age": 26,
-      "id": "vZ2tCVrY04k"
+      "age": 25,
+      "id": "mPe1SMlLX_s"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
